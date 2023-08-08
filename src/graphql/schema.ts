@@ -26,6 +26,7 @@ const typeDefs = gql`
     changePassword(email: String!, oldPassword: String!, newPassword: String!): Boolean
     enableTwoFactorAuth(email: String!): TwoFactorAuthResult
     verifyTwoFactorAuth(email: String!, token: String!): Boolean
+    loginWith2FA(email: String!, password: String!, code: String!): AuthPayload
   }
 `;
 
