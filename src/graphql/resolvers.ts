@@ -1,4 +1,3 @@
-// src/graphql/resolvers.ts
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User, { IUser } from '../models/User';
