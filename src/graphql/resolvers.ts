@@ -62,7 +62,7 @@ const resolvers: ResolverMap = {
     },
     
 
-
+    // User change password mutation
     changePassword: async (_, { email, oldPassword, newPassword }) => {
       // Find the user by email
       const user = await User.findOne({ email });
@@ -88,7 +88,8 @@ const resolvers: ResolverMap = {
       return true; // Password change successful
     },
 
-
+    
+    // User enable two factor authentication mutation
     enableTwoFactorAuth: async (_, { email }) => {
       // Find the user by email
       const user = await User.findOne({ email });
@@ -119,7 +120,7 @@ const resolvers: ResolverMap = {
     },
 
 
-
+    // User verify two factor authentication mutation
     verifyTwoFactorAuth: async (_, { email, token }) => {
       // Find the user by email
       const user = await User.findOne({ email });
@@ -144,7 +145,7 @@ const resolvers: ResolverMap = {
     },
 
 
-    
+    // User login with 2FA mutation
     loginWith2FA: async (_, { email, password, code }) => {
       // Find the user by email
       const user = await User.findOne({ email });
