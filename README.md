@@ -1,5 +1,5 @@
 # graphql-authentication-typescript
-This project is a GraphQL-based authentication system that provides user registration, login, and two-factor authentication (2FA) capabilities. It is built using Node.js Typescript, MongoDB, GraphQL, and various libraries such as bcrypt for password hashing, jsonwebtoken for token-based authentication, speakeasy for two-factor authentication, and qrcode for generating QR codes.
+This project is a GraphQL-based authentication system that provides user registration, login, and two-factor authentication (2FA) capabilities. It is built using Typescript, MongoDB, GraphQL, and various libraries such as bcrypt for password hashing, jsonwebtoken for token-based authentication, speakeasy for two-factor authentication, and qrcode for generating QR codes.
 
 # Features
 User Registration: Users can register by providing their username, email, and password. The password is securely hashed using bcrypt before being stored in the database.
