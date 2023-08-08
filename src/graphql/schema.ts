@@ -6,6 +6,7 @@ const typeDefs = gql`
     id: ID!
     username: String!
     email: String!
+    twoFactorSecret: String!
   }
 
   type AuthPayload {
@@ -16,10 +17,15 @@ const typeDefs = gql`
   type Query {
     me: User
   }
-
+  type TwoFactorAuthResult {
+    qrCodeImage: String
+  }
   type Mutation {
     register(username: String!, email: String!, password: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
+    changePassword(email: String!, oldPassword: String!, newPassword: String!): Boolean
+    enableTwoFactorAuth(email: String!): TwoFactorAuthResult
+    verifyTwoFactorAuth(email: String!, token: String!): Boolean
   }
 `;
 
