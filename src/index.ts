@@ -6,6 +6,10 @@ import authenticate from './middleware/authenticate';
 import { ResolverMap } from './types';
 import connectDB from './utils/connectdb';
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
+
+const PORT = process.env.port || 4000;
 
 // Connect to MongoDB
 connectDB()
@@ -25,7 +29,7 @@ async function startApolloServer() {
   // Apply Apollo Server as middleware
   server.applyMiddleware({ app });
 
-  const PORT = 4000;
+ 
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}${server.graphqlPath}`);
   });
