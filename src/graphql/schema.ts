@@ -17,7 +17,7 @@ const typeDefs = gql`
     me: User
   }
   type TwoFactorAuthResult {
-    qrCodeImage: String
+    qrCodeImagePath: String
   }
   type Mutation {
     register(username: String!, email: String!, password: String!): AuthPayload

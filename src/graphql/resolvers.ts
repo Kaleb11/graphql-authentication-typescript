@@ -7,7 +7,9 @@ import speakeasy from 'speakeasy'; // Import speakeasy
 import qrcode from 'qrcode'; // Import qrcode
 const dotenv = require("dotenv");
 dotenv.config();
-
+//import qrcode from 'qrcode-terminal';
+import fs from 'fs';
+import path from 'path';
 const TOKEN_KEY = process.env.token || 'secret';
 
 const resolvers: ResolverMap = {
@@ -93,30 +95,45 @@ const resolvers: ResolverMap = {
     enableTwoFactorAuth: async (_, { email }) => {
       // Find the user by email
       const user = await User.findOne({ email });
-
+    
       // If user doesn't exist, throw an error
       if (!user) {
         throw new Error('User not found');
       }
-
+    
       // Generate a secret key for the user
       const secret = speakeasy.generateSecret();
-
+    
       // Store the secret key with the user
       user.twoFactorSecret = secret.base32;
       await user.save();
-
+    
       // Generate OTP URL for QR code
       const otpUrl = speakeasy.otpauthURL({
         secret: secret.ascii,
         label: 'graphqlauth:' + user.id,
         issuer: 'graphqlauth',
       });
-
+    
       // Generate QR code image
-      const qrCodeImage = await qrcode.toDataURL(otpUrl);
-
-      return { qrCodeImage };
+      const qrCodeImageBuffer = await qrcode.toBuffer(otpUrl);
+    
+      // Create a unique filename for the QR code image
+      const filename = `${user.id}-qrcode.png`;
+    
+      // Save the QR code image to a directory (e.g., "public/images")
+      const imagePath = path.join(__dirname, '../../public', 'images', filename);
+      try {
+        // Save the QR code image to the specified path
+        fs.writeFileSync(imagePath, qrCodeImageBuffer);
+      } catch (error) {
+        // Handle error
+        console.error('Error saving QR code image:', error);
+        throw new Error}
+      // Get the relative path from /public portion
+      const relativeImagePath = path.relative(path.join( 'Graphql-authentication-Typescript'), imagePath);
+      // Return the image file path or a URL
+      return { qrCodeImagePath: relativeImagePath };
     },
 
 

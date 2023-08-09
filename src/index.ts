@@ -8,6 +8,7 @@ import connectDB from './utils/connectdb';
 const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
+app.use("/public", express.static("public"));
 
 const PORT = process.env.port || 4000;
 
