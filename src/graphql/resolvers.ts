@@ -132,8 +132,10 @@ const resolvers: ResolverMap = {
         throw new Error}
       // Get the relative path from /public portion
       const relativeImagePath = path.relative(path.join( 'Graphql-authentication-Typescript'), imagePath);
+       // Remove the first two dots from the relative path
+      const cleanedImagePath = relativeImagePath.replace(/^(\.\.)+/, '');
       // Return the image file path or a URL
-      return { qrCodeImagePath: relativeImagePath };
+      return { qrCodeImagePath: cleanedImagePath };
     },
 
 
