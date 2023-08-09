@@ -15,7 +15,7 @@ Password Change: Users can change their password by providing their old password
 # Setup and Usage
 Clone the repository and install dependencies using npm install.
 
-Start the application using npm start. Access it at http://localhost:4000.
+Start the application using npm start. Access it at http://localhost:4000/graphql
 
 Use GraphQL queries and mutations to interact with the authentication system, such as registering users, logging in, enabling 2FA, and changing passwords.
 
