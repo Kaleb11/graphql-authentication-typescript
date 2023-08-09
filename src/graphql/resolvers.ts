@@ -1,15 +1,16 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User, { IUser } from '../models/User';
+import User from '../models/User';
 import { ResolverMap } from '../types';
 import {ApolloError, AuthenticationError } from 'apollo-server-express'; // Import the AuthenticationError class
 import speakeasy from 'speakeasy'; // Import speakeasy
 import qrcode from 'qrcode'; // Import qrcode
-const dotenv = require("dotenv");
-dotenv.config();
-//import qrcode from 'qrcode-terminal';
 import fs from 'fs';
 import path from 'path';
+const dotenv = require("dotenv");
+dotenv.config();
+
+
 const TOKEN_KEY = process.env.token || 'secret';
 
 const resolvers: ResolverMap = {
