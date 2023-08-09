@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import { ResolverMap } from '../types';
-import {ApolloError, AuthenticationError } from 'apollo-server-express'; // Import the AuthenticationError class
+import {ApolloError, AuthenticationError } from 'apollo-server-express'; // Import the AuthenticationError and ApolloError class
 import speakeasy from 'speakeasy'; // Import speakeasy
 import qrcode from 'qrcode'; // Import qrcode
 import fs from 'fs';
